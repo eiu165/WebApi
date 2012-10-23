@@ -9,8 +9,8 @@ namespace MvcApplication18.Controllers
 {
     public class Instructor
     {
-        public int Id;
-        public string Name;
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
     public class InstructorsController : ApiController

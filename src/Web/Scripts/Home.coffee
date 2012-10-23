@@ -4,15 +4,22 @@ Instructor = (data) ->
     Name:Name
     Id:Id 
 viewModel =-> 
+    postName = ko.observable()
     instructors = ko.observableArray([])      
     load = -> 
-        console.log 'load'   
         $.getJSON("/api/Instructors",(data )->mapData(data )) 
-    mapData = (data) ->
-        console.log 'in mapData ' + data 
-        mappedItems = $.map( data , (item)-> Instructor(item) )
-        console.log 'after mapitems'
+    mapData = (data) -> 
+        mappedItems = $.map( data , (item)-> Instructor(item) ) 
         instructors(mappedItems)  
+    postInstructor = (postName) -> 
+        postJson = $.parseJSON '{"Id":0, "Name": "' + this.postName() + '"  }' 
+        $.post '/api/Instructors', 
+            postJson, 
+            (data) -> 
+                console.log 'done with post:     ' +  data  
+                instructors.push Instructor(data)  
+    postInstructor:postInstructor
+    postName:postName
     instructors:instructors     
     load:load        
 $(->    

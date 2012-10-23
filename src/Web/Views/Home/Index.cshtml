@@ -17,18 +17,40 @@
             </p>
         </div>
     </section>
-}
-<h3>We suggest the following:</h3>
-
-
-
-   
+} 
 <ul data-bind="foreach: instructors">
     <li>
         age:<span data-bind="text: Id"></span> 
         type:<span data-bind="text: Name"></span>
     </li>
-</ul>  
+</ul> 
+
+<fieldset>
+    <legend>post</legend>
+    <form data-bind="submit: postInstructor">
+        <input data-bind="value: postName" placeholder="name" /><br />
+        <button type="submit">post</button>
+    </form>
+</fieldset> 
+
+@*<fieldset>
+    <legend>post</legend>
+    <form data-bind="submit: putInstructor">
+        <input data-bind="value: putName" placeholder="name" /><br />
+        <input data-bind="value: putId" placeholder="id" /><br />
+        <button type="submit">put</button>
+    </form>
+</fieldset> 
+
+ 
+<fieldset>
+    <legend>post</legend>
+    <form data-bind="submit: deleteInstructor">
+    <input data-bind="value: deleteId" placeholder="what is id of instructor you want to delete?" /><br />
+    <button type="submit">delete</button>
+</form>
+</fieldset> *@
+
  
 
 @section scripts { 

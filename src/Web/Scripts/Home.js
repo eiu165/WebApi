@@ -12,24 +12,32 @@
   };
 
   viewModel = function() {
-    var instructors, load, mapData;
+    var instructors, load, mapData, postInstructor, postName;
+    postName = ko.observable();
     instructors = ko.observableArray([]);
     load = function() {
-      console.log('load');
       return $.getJSON("/api/Instructors", function(data) {
         return mapData(data);
       });
     };
     mapData = function(data) {
       var mappedItems;
-      console.log('in mapData ' + data);
       mappedItems = $.map(data, function(item) {
         return Instructor(item);
       });
-      console.log('after mapitems');
       return instructors(mappedItems);
     };
+    postInstructor = function(postName) {
+      var postJson;
+      postJson = $.parseJSON('{"Id":0, "Name": "' + this.postName() + '"  }');
+      return $.post('/api/Instructors', postJson, function(data) {
+        console.log('done with post:     ' + data);
+        return instructors.push(Instructor(data));
+      });
+    };
     return {
+      postInstructor: postInstructor,
+      postName: postName,
       instructors: instructors,
       load: load
     };
