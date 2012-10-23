@@ -26,6 +26,7 @@ namespace MvcApplication18.Controllers
         }
 
         // get   {baseUrl}/api/Instructors
+        [HttpGet]
         public IEnumerable<Instructor> Get()
         {
             var instructors = _instructors;
@@ -34,6 +35,7 @@ namespace MvcApplication18.Controllers
 
 
         // get   {baseUrl}/api/Instructors/1
+        [HttpGet]
         public Instructor Get(int id)
         {
             var instructor = (from i in _instructors
@@ -45,6 +47,7 @@ namespace MvcApplication18.Controllers
         //Post Url           {baseUrl}/api/Instructors
         //Request Headers    Content-Type:application/json
         //Request Body       {"Id":0, "Name":"Jon"}
+        [HttpPost]
         public Instructor Post(Instructor instructor)
         {
             var newId = _instructors.Count + 1;
@@ -56,6 +59,7 @@ namespace MvcApplication18.Controllers
         //Put Url            {baseUrl}/api/Instructors
         //Request Headers    Content-Type:application/json
         //Request Body       {"Id":1, "Name":"Jooooooooooo"}
+        [HttpPut]
         public Instructor Put(Instructor instructor)
         {
             var realinstructor = (from i in _instructors
@@ -66,6 +70,7 @@ namespace MvcApplication18.Controllers
         }
 
         // delete   {baseUrl}/api/Instructors/1
+        [HttpDelete]
         public void Delete(int id)
         {
             var instructor = (from i in _instructors

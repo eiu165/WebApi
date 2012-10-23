@@ -5,6 +5,9 @@ Instructor = (data) ->
     Id:Id 
 viewModel =-> 
     postName = ko.observable()
+    putName = ko.observable()
+    putId = ko.observable()
+    deleteId = ko.observable()
     instructors = ko.observableArray([])      
     load = -> 
         $.getJSON("/api/Instructors",(data )->mapData(data )) 
@@ -18,11 +21,33 @@ viewModel =->
             (data) -> 
                 console.log 'done with post:     ' +  data  
                 instructors.push Instructor(data)  
+    putInstructor = (postName) -> 
+        json = $.parseJSON '{"Id":' + this.putId() + ', "Name": "' + this.putName() + '"  }' 
+        $.ajax 
+            type:'PUT'
+            , url: '/api/Instructors'
+            , data: json 
+            , (data) -> 
+                console.log 'done'
+                load
+    deleteInstructor = (id) ->
+        json = $.parseJSON('{"Id":1 }')
+        $.ajax 
+            type:'DELETE'
+            , url: '/api/Instructors'
+            , data: json 
+            , (data) -> 
+                console.log 'done'
     postInstructor:postInstructor
+    deleteInstructor:deleteInstructor
+    putInstructor:putInstructor
     postName:postName
+    putName:putName
+    putId:putId 
+    deleteId:deleteId
     instructors:instructors     
     load:load        
-$(->    
+$(->
     console.log 'start'   
     vm = new viewModel()
     vm.load()

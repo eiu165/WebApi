@@ -12,8 +12,11 @@
   };
 
   viewModel = function() {
-    var instructors, load, mapData, postInstructor, postName;
+    var deleteId, deleteInstructor, instructors, load, mapData, postInstructor, postName, putId, putInstructor, putName;
     postName = ko.observable();
+    putName = ko.observable();
+    putId = ko.observable();
+    deleteId = ko.observable();
     instructors = ko.observableArray([]);
     load = function() {
       return $.getJSON("/api/Instructors", function(data) {
@@ -35,9 +38,37 @@
         return instructors.push(Instructor(data));
       });
     };
+    putInstructor = function(postName) {
+      var json;
+      json = $.parseJSON('{"Id":' + this.putId() + ', "Name": "' + this.putName() + '"  }');
+      return $.ajax({
+        type: 'PUT',
+        url: '/api/Instructors',
+        data: json
+      }, function(data) {
+        console.log('done');
+        return load;
+      });
+    };
+    deleteInstructor = function(id) {
+      var json;
+      json = $.parseJSON('{"Id":1 }');
+      return $.ajax({
+        type: 'DELETE',
+        url: '/api/Instructors',
+        data: json
+      }, function(data) {
+        return console.log('done');
+      });
+    };
     return {
       postInstructor: postInstructor,
+      deleteInstructor: deleteInstructor,
+      putInstructor: putInstructor,
       postName: postName,
+      putName: putName,
+      putId: putId,
+      deleteId: deleteId,
       instructors: instructors,
       load: load
     };
