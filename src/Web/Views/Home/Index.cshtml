@@ -1,29 +1,45 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+
+@section head {
+    <style type="text/css">
+        fieldset { border:solid black 1px; margin:5px; padding:5px;
+        }
+        fieldset legend {display:block;
+        }
+    </style>
+}
+
+
 @section featured {
-    <section class="featured">
+    @* <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
                 <h1>@ViewBag.Title.</h1>
                 <h2>@ViewBag.Message</h2>
             </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+            <p> 
+                visit
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>. 
             </p>
         </div>
-    </section>
-} 
+    </section>*@
+}
 <ul data-bind="foreach: instructors">
-    <li>
-        age:<span data-bind="text: Id"></span> 
-        type:<span data-bind="text: Name"></span>
+    <li>Id:  <span data-bind="text: Id"></span>
+        Name: <span data-bind="text: Name"></span>
     </li>
 </ul> 
+
+<fieldset>
+    <legend>get</legend>
+<form data-bind="submit: load"> 
+    <button type="submit">get</button>
+</form>
+</fieldset>
+
 
 <fieldset>
     <legend>post</legend>
@@ -31,29 +47,29 @@
         <input data-bind="value: postName" placeholder="name" /><br />
         <button type="submit">post</button>
     </form>
-</fieldset> 
+</fieldset>
 
-<fieldset>
-    <legend>post</legend>
+@*<fieldset>
+    <legend>put</legend>
     <form data-bind="submit: putInstructor">
         <input data-bind="value: putName" placeholder="name" /><br />
         <input data-bind="value: putId" placeholder="id" /><br />
         <button type="submit">put</button>
     </form>
 </fieldset> 
- 
- 
+ *@
+
 <fieldset>
     <legend>delete</legend>
     <form data-bind="submit: deleteInstructor">
-    <input data-bind="value: deleteId" placeholder="what is id of instructor you want to delete?" /><br />
-    <button type="submit">delete</button>
-</form>
-</fieldset> 
+        <input data-bind="value: deleteId" placeholder="what is id of instructor you want to delete?" /><br />
+        <button type="submit">delete</button>
+    </form>
+</fieldset>
 
- 
 
-@section scripts { 
+
+@section scripts {
     <script src="~/Scripts/knockout-2.1.0.debug.js"></script>
-    <script src="~/Scripts/Home.js"></script> 
+    <script src="~/Scripts/Home.js"></script>
 }

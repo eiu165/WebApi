@@ -46,19 +46,17 @@
         url: '/api/Instructors',
         data: json
       }, function(data) {
-        console.log('done');
-        return load;
+        return console.log('done');
       });
     };
     deleteInstructor = function(id) {
-      var json;
-      json = $.parseJSON('{"Id":1 }');
       return $.ajax({
         type: 'DELETE',
-        url: '/api/Instructors',
-        data: json
-      }, function(data) {
-        return console.log('done');
+        url: '/api/Instructors/' + this.deleteId(),
+        success: function(data) {
+          console.log('done');
+          return load;
+        }
       });
     };
     return {

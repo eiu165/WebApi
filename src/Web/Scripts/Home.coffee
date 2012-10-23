@@ -28,19 +28,17 @@ viewModel =->
             , url: '/api/Instructors'
             , data: json 
             , (data) -> 
-                console.log 'done'
-                load
-    deleteInstructor = (id) ->
-        json = $.parseJSON('{"Id":1 }')
+                console.log 'done' 
+    deleteInstructor = (id) -> 
         $.ajax 
             type:'DELETE'
-            , url: '/api/Instructors'
-            , data: json 
-            , (data) -> 
+            , url: '/api/Instructors/' + this.deleteId()
+            , success: (data) -> 
                 console.log 'done'
+                load
     postInstructor:postInstructor
     deleteInstructor:deleteInstructor
-    putInstructor:putInstructor
+    putInstructor:putInstructor 
     postName:postName
     putName:putName
     putId:putId 
