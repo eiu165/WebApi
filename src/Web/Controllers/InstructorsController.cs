@@ -50,7 +50,7 @@ namespace MvcApplication18.Controllers
         [HttpPost]
         public Instructor Post(Instructor instructor)
         {
-            var newId = _instructors.Count + 1;
+            var newId = _instructors.Max(x=> x.Id) + 1;
             instructor.Id = newId;
             _instructors.Add(instructor);
             return instructor;
