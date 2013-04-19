@@ -22,6 +22,7 @@ namespace Tailspin.Data
         }
         public IEnumerable<Toy> Get()
         {
+            throw new NotImplementedException();
             var list = new List<Toy>();
             list.Add(new Toy { Name = "Airplane", Description = "wind up", Price = 94.3 });
             return (list);
