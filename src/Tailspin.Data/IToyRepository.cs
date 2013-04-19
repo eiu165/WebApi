@@ -16,9 +16,9 @@ namespace Tailspin.Data
     public class ToyRepository : IToyRepository
     {
         private string _connectionString;
-        public ToyRepository(string connectionString)
+        public ToyRepository() //string connectionString)
         {
-            this._connectionString = connectionString;
+            //this._connectionString = connectionString;
         }
         public IEnumerable<Toy> Get()
         {
