@@ -30,7 +30,7 @@ namespace Tailspin.Web.Infastructure.Insataller
             //);
 
             container.Register( Component.For<IToyRepository>().ImplementedBy<ToyRepository>()
-                .DependsOn( Dependency.OnValue( "connectionString", "")) //ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString))
+                .DependsOn(Dependency.OnValue("connectionString", ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString)) //ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString))
                 .LifeStyle.PerWebRequest);
         }
     }

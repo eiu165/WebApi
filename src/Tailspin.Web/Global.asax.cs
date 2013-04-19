@@ -27,15 +27,12 @@ namespace Tailspin.Web
             var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 
-
-
             container.Install(
-                    //new CommonInstaller(),
-                    //new DataInstaller(),
-                    //new ServiceInstaller(),
+                //new CommonInstaller(),
+                //new DataInstaller(),
+                //new ServiceInstaller(),
                 new WebInstaller()
                 );
-
         }
         protected void Application_End()
         {
