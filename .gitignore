@@ -10,3 +10,4 @@ _ReSharper*
 *.suo
 *ncrunch*
 *.user
+*.log

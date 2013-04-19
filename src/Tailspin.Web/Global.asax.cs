@@ -35,6 +35,10 @@ namespace Tailspin.Web
                 new LogInstaller(),
                 new WebInstaller()
                 );
+
+
+
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         void Application_Error(Object sender, EventArgs e)
