@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Tailspin.Web.Infastructure.Insatallers
+namespace Tailspin.Web.Infastructure.Insataller
 {
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using System.Configuration;
     using System.Web.Mvc;
     using Tailspin.Business;
     using Tailspin.Data;
@@ -28,11 +29,8 @@ namespace Tailspin.Web.Infastructure.Insatallers
             //            .DependsOn(new { databaseName = "MyDatabaseName" }))); 
             //);
 
-            container.Register(
-                Component.For<IToyRepository>().ImplementedBy<ToyRepository>()
-                .DependsOn(
-                    Dependency.OnValue(
-                        "connectionString", "someconnectionstring goes here"))
+            container.Register( Component.For<IToyRepository>().ImplementedBy<ToyRepository>()
+                .DependsOn( Dependency.OnValue( "connectionString", "")) //ConfigurationManager.ConnectionStrings["ApplicationConnectionString"].ConnectionString))
                 .LifeStyle.PerWebRequest);
         }
     }

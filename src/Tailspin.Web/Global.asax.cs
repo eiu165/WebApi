@@ -9,7 +9,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Tailspin.Data;
-using Tailspin.Web.Infastructure.Insatallers;
+using Tailspin.Web.Infastructure.Insataller;
+using Tailspin.Web.Infastructure.IocContainer;
 
 namespace Tailspin.Web
 {
@@ -22,8 +23,7 @@ namespace Tailspin.Web
 
         private static void BootstrapContainer()
         {
-            container = new WindsorContainer();
-             //   .Install(FromAssembly.This());
+            container = new WindsorContainer();             //   .Install(FromAssembly.This());
             var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 

@@ -16,8 +16,8 @@ namespace Tailspin.Web.Controllers
         }
         public ActionResult Index()
         {
-var toys =            _toyService.Get();
-            return View();
+            var toys = _toyService.Get();
+            return View(toys);
         }
 
     }

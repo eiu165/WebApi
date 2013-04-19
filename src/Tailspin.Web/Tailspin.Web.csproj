@@ -120,8 +120,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infastructure\Insatallers\WebInstaller.cs" />
-    <Compile Include="Infastructure\WindsorControllerFactory.cs" />
+    <Compile Include="Infastructure\IocContainer\Insataller\WebInstaller.cs" />
+    <Compile Include="Infastructure\IocContainer\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

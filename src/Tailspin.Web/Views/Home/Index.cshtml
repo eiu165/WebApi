@@ -4,3 +4,38 @@
 }
 
 <h2>Index</h2>
+
+
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Desc
+        </th>
+        <th>
+            Price
+        </th> 
+    </tr>
+    
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Name 
+        </td>
+        <td>
+            @item.Description 
+        </td>
+        <td>
+            @item.Price 
+        </td>  
+    </tr>
+}
+
+</table>
+
+
+
