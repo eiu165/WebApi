@@ -22,19 +22,19 @@ namespace Tailspin.Web
 
         private static void BootstrapContainer()
         {
-            container = new WindsorContainer()
-                .Install(FromAssembly.This());
+            container = new WindsorContainer();
+             //   .Install(FromAssembly.This());
             var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 
 
 
-            //container.Install(
-                //    new CommonInstaller(),
-                //    new DataInstaller(),
-                //    new ServiceInstaller(),
-              //  new WebInstaller()
-                //);
+            container.Install(
+                    //new CommonInstaller(),
+                    //new DataInstaller(),
+                    //new ServiceInstaller(),
+                new WebInstaller()
+                );
 
         }
         protected void Application_End()
