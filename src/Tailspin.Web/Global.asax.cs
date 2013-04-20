@@ -20,7 +20,7 @@ namespace Tailspin.Web
     public class MvcApplication : System.Web.HttpApplication
     {
 
-        private static IWindsorContainer container;
+        public static IWindsorContainer container;
 
         private static void BootstrapContainer()
         {
